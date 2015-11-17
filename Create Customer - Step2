@@ -1,0 +1,26 @@
+<?php
+
+// WePay PHP SDK - http://git.io/mY7iQQ
+require 'wepay.php';
+
+// application settings
+$client_id = 29365;
+$client_secret = "6cefebee0b";
+$access_token = "STAGE_8a19aff55b85a436dad5cd1386db1999437facb5914b494f4da5f206a56a5d20";
+
+// change to useProduction for live environments
+Wepay::useProduction($client_id, $client_secret);
+
+$wepay = new WePay($access_token);
+
+// create an account for a user
+$response = $wepay->request('account/create/', array(
+    'name'         => 'Youth World Today',
+    'description'  => 'Merchandise Payments Account.'
+));
+
+// display the response
+print_r($response);
+
+?>
+
