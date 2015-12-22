@@ -1,0 +1,35 @@
+Youth World Today - WePay API Regular Checkout - Step #6
+
+<?php
+//// Wepay API regular checkout
+//// written by Alan Pinnt www.alanpinnt.com
+//// 2012
+ 
+require 'wepay.php';
+ 
+$client_id = "29365";
+$client_secret = "6cefebee0b";
+$access_token = "PRODUCTION_ebce1071a3c99f5e6ea27082f1fae066c2af145c055b8d06f2fe5aeb2f4359d6";
+$account_id = "1423217618"; 
+ 
+Wepay::useProduction($client_id, $client_secret);
+$wepay = new WePay($access_token);
+ 
+try {
+$checkout = $wepay->request('/checkout/create', array(
+'account_id' => $account_id, // ID of the account that you want the money to go to
+'amount' => "1.00", // dollar amount you want to charge the user
+'short_description' => "Merchandise Sale", // a short description of what the payment is for
+'reference_id' => "358642", // A reference id for your application to use.
+'type' => "GOODS", // the type of the payment - choose from GOODS SERVICE DONATION or PERSONAL
+'mode' => "regular", // put iframe here if you want the checkout to be in an iframe, regular if you want the user to be sent to WePay
+'fee_payer' => "Payee", // Here you put who is paying the fees you or your client. Payee = client, Payer = account holder
+'redirect_uri' => "http://www.youthworldtoday.com/thanks.php", // The page where you want clients to go after the transaction is completed.
+'callback_uri' => "http://www.youthworldtoday.com/wepayipn.php", // Location of the file that handles IPN requests
+)
+);
+} catch (WePayException $e) { // if the API call returns an error, get the error message for display later
+$error = $e->getMessage();}
+header("Location: $checkout->checkout_uri"); ///redirect user to the payment page
+?>
+
