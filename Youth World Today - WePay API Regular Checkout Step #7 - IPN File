@@ -1,0 +1,68 @@
+Youth World Today - WePay API Regular Checkout Step #7 - IPN File
+
+<?php
+//// Wepay IPN
+//// written by Alan Pinnt www.alanpinnt.com
+//// 2012
+
+
+
+require 'wepay.php';
+ 
+if (!empty($_POST['checkout_id'])) {$thecheckoutid = $_POST['checkout_id'];}
+ 
+$client_id = "29365";
+$client_secret = "6cefebee0b";
+$access_token = "PRODUCTION_ebce1071a3c99f5e6ea27082f1fae066c2af145c055b8d06f2fe5aeb2f4359d6";
+$account_id = "1423217618"; 
+ 
+/**
+* Initialize the WePay SDK object
+*/
+Wepay::useProduction($client_id, $client_secret);
+$wepay = new WePay($access_token);
+ 
+/**
+* Make the API request to get the checkout_uri
+*
+*/
+try {
+$checkout = $wepay->request('checkout', array(
+'checkout_id' => $thecheckoutid, // ID of the account that you want the money to go to
+)
+);
+} catch (WePayException $e) { // if the API call returns an error, get the error message for display later
+$error = $e->getMessage();
+}
+ 
+///some things you might want to use. Delete this stuff otherwise///
+print '<br /><br />';
+print $checkout->short_description;
+print '<br /><br />';
+print $checkout->checkout_id;
+print '<br /><br />';
+print $checkout->reference_id;
+print '<br /><br />';
+print $checkout->gross;
+print '<br /><br />';
+print $checkout->payer_name;
+////stop deleteing here///
+ 
+	if ($checkout->state == "captured") {
+	///do something here
+        } elseif ($checkout->state == "authorized") {
+	///do something here
+        } elseif ($checkout->state == "cancelled") {
+	///do something here
+        } elseif ($checkout->state == "refunded") {
+	///do something here
+        } elseif ($checkout->state == "expired") {
+	///do something here
+        }
+?>
+
+
+
+
+
+
