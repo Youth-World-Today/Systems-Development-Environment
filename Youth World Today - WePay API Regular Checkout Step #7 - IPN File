@@ -49,15 +49,21 @@ print $checkout->payer_name;
 ////stop deleteing here///
  
 	if ($checkout->state == "captured") {
-	///do something here
+	    print '<br /><br />'
+	    print $checkout->state 
         } elseif ($checkout->state == "authorized") {
-	///do something here
+	    print '<br /><br />'
+	    print $checkout->state    
         } elseif ($checkout->state == "cancelled") {
-	///do something here
-        } elseif ($checkout->state == "refunded") {
-	///do something here
+	    print '<br /><br />'
+	    print $checkout->state
+	} elseif ($checkout->state == "refunded") {
+	    print '<br /><br />'
+	    print $checkout->state 
         } elseif ($checkout->state == "expired") {
-	///do something here
+            print '<br /><br />'
+	    print $checkout->state
+	    
         }
 ?>
 
