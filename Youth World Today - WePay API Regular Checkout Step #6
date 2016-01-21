@@ -1,6 +1,8 @@
 Youth World Today - WePay API Regular Checkout - Step #6
 
-https://wepayapi.com/v2/
+
+https://www.wepay.com/v2/
+////https://wepayapi.com/v2/
 
 <?php
 //// Wepay API regular checkout
