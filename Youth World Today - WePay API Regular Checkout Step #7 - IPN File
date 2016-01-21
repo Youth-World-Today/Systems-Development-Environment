@@ -1,6 +1,8 @@
 Youth World Today - WePay API Regular Checkout Step #7 - IPN File
 
-https://wepayapi.com/v2/
+
+https://www.wepay.com/v2/
+////https://wepayapi.com/v2/
 
 <?php
 //// Wepay IPN
