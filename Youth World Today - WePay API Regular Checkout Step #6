@@ -13,7 +13,7 @@ require 'wepay.php';
  
 $client_id = "29365";
 $client_secret = "6cefebee0b";
-$access_token = "PRODUCTION_ebce1071a3c99f5e6ea27082f1fae066c2af145c055b8d06f2fe5aeb2f4359d6";
+$access_token = "PRODUCTION_85371b10bc3974984c3b24f87566d4c9bcc2f24f37e8b0a5e25d14308c47dfb5";
 $account_id = "1423217618"; 
  
 Wepay::useProduction($client_id, $client_secret);
