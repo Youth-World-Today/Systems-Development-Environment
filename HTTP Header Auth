@@ -1,0 +1,13 @@
+Establishing HTTP Header with authorization info and access_token for checkout processing PHP Libcurl Function
+
+https://wepayapi.com/v2/
+
+<?php
+$access_token = ‘PRODUCTION_571da048de58f6767b4d3997bc7fa30b62d5ce48c949db0cd93cb7b49d3ac509’; $ch = curl_init('https://wepayapi.com/v2/user'); 
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER,
+    array("Authorization: Bearer $access_token"));
+$result = curl_exec($ch);
+print_r(json_decode($result, true));
+
+
